@@ -19,11 +19,18 @@ class ComponentSeeder extends Seeder
         Component::truncate();
         $items = [
             ['id' => 1, 'component' => 'User Management'],
-            ['id' => 2, 'component' => 'Role Management'],
+            ['id' => 2, 'component' => 'User Type Management'],
             ['id' => 3, 'component' => 'Permission'],
             ['id' => 4, 'component' => 'Permission Component'],
-            ['id' => 5, 'component' => 'Organization'],
+            ['id' => 5, 'component' => 'organization'],
             ['id' => 6, 'component' => 'User'],
+            ['id' => 7, 'component' => 'blog'],
+            ['id' => 8, 'component' => 'campaign'],
+            ['id' => 9, 'component' => 'bloodstock'],
+            ['id' => 10, 'component' => 'client'],
+            ['id' => 11, 'component' => 'question'],
+            ['id' => 12, 'component' => 'blood'],
+            ['id' => 13, 'component' => 'detail'],
         ];
 
         foreach($items as $item)

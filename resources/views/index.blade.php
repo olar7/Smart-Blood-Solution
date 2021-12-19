@@ -8,22 +8,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+        integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
     <style>
         .featured-content {
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 2px solid;
+            border: 5px solid;
             margin: 50px 300px;
+            border-radius: 8px;
         }
 
         .card {
             margin: 30px;
+            border: 2px solid;
+           
         }
 
         .titleheading {
-            border: 2px solid;
-            margin: 0px 300px;
+            /* border: 2px solid; */
+            /* margin: 0px 300px; */
+            display: flex;
         }
 
         .titleheading h2 {
@@ -33,9 +41,21 @@
         .titleheading p {
             text-align: justify;
         }
+        .about-content{
+           
+            text-align: center;
+        
+        }
+        .about-content p{
+            /* margin-top: 80px; */
+            margin: 60px 50px;
+        }
 
         .card h5 {
             font-weight: bold;
+        }
+        .card-text{
+            text-align: justify;
         }
 
         #F-C {
@@ -229,7 +249,11 @@
 
         .contactform {
             margin: 0 200px;
+           
+
         }
+
+       
 
         .contactform h2 {
             text-align: center;
@@ -237,125 +261,191 @@
         #mapsec{
             margin-top:30px;
         }
+        .carousel-item h5 {
+            color: black;
+            font-weight: bold;
+        }
+        .carousel-item h2 {
+            color: black;
+            font-weight: bold;
+        }
+        .carousel-item p{
+            color: black;
+            font-weight: bold;
+        }
+        .slider-btn button{
+            padding: 10px;
+            border: 2px solid;
+            border-radius: 13px;
+            background-color: coral;
+            font-weight: bold;
+            
+        }
+        .carousel-item{
+            opacity: 0.9;
+        }
+        .carousel-inner{
+            margin-bottom: 50px;
+        }
+        #list-org{
+            width:100%
+        }
+        #org-show{
+            background-color: #cf3d3c;
+            height: 80px;
+        }
+
+        #org-show h2{
+            color: white;
+            text-align: center;
+            
+        }
+        .slider-btn a{
+            text-decoration: none;
+            color: black;
+        }
+
+      
+        
     </style>
 </head>
 
 <body>
-    <link rel="stylesheet" href="index.css">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="images/ben.jpg" alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="..." alt="Second slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="..." alt="Third slide">
-            </div>
+   
+<!-- carousel starts -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/bloodimg.jpeg" class="d-block w-100" alt="..." style="height: 600px;">
+            <div class="carousel-caption d-none d-md-block">
+              <h2>Eliminate Blood Scarcity</h2>
+              <p>Donate Now</p>
+              <div class="slider-btn">
+                <button><a href="/bedonor">Donate Blood</a></button>
+                <button><a href="/donorreq">Request Blood</a></button>
+            </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/2.jpg" class="d-block w-100" alt="..." style="height: 600px;">
+            <div class="carousel-caption d-none d-md-block">
+            <h2>Eliminate Blood Scarcity</h2>
+              <p>donating your time to make an impact, your blood to save lives or your money to create a holistic blood management cycle.</p>
+              <div class="slider-btn">
+                <button><a href="/bedonor">Donate Blood</a></button>
+                <button><a href="/donorreq">Request Blood</a></button>
+            </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/3.jpg" class="d-block w-100" alt="..." style="height: 600px;">
+            <div class="carousel-caption d-none d-md-block">
+                <h2>Eliminate Blood Scarcity</h2>
+                <p>Donate Now</p>
+                <div class="slider-btn">
+                    <button><a href="/bedonor">Donate Blood</a></button>
+                    <button><a href="/donorreq">Request Blood</a></button>
+                  </div>
+              <!-- <div class="slider-btn">
+              <button>Become a Donor</button>
+                <button>Learn More</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    <!-- carousel ends -->
 
-    <h2 id="F-C">Featured campaigns</h2>
+    <!-- featured campaigns starts here -->
+    <h2 id="F-C">Up-Comming campaigns</h2>
 
     <div class="featured-content">
 
         <div class="card" style="width: 18rem;">
-            <img src="images/ben2.png" class="card-img-top" alt="...">
+            <img src="images/camp1.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel rem esse dolore
-                    explicabo soluta tenetur quis ad perspiciatis recusandae optio?</p>
-                <a href="#" class="btn btn-primary">View Details</a>
+            <h4>Red Cross</h4>
+                <hr>
+                <h5 class="card-title">19th December,2021</h5>
+                <p class="card-text">Nepal Red Cross  is conducting a blood donation camp at Ravibhawan at 19th of december till 25th of december.</p>
+                <a href="/campaigndetails" class="btn btn-primary">View Details</a>
             </div>
         </div>
         <div class="card" style="width: 18rem;">
-            <img src="images/ben2.png" class="card-img-top" alt="...">
+            <img src="images/camp.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim nam reiciendis
-                    explicabo. Temporibus, inventore! Deserunt tenetur voluptas commodi iste provident.</p>
-                <a href="#" class="btn btn-primary">View Details</a>
+            <h4>Himal Blood Bank</h4>
+                <hr>
+                <h5 class="card-title">25th December,2021</h5>
+                <p class="card-text">Himal Blood Organization is conducting a blood donation camp at Basantapur at 25th of december till 27th of december.Find more details</p>
+                <a href="/campaigndetails" class="btn btn-primary">View Details</a>
             </div>
         </div>
         <div class="card" style="width: 18rem;">
-            <img src="images/ben2.png" class="card-img-top" alt="...">
+            <img src="images/7.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores reprehenderit
-                    deleniti facilis dolor natus consequuntur sunt perspiciatis, ipsam quibusdam similique.</p>
-                <a href="#" class="btn btn-primary">View Details</a>
+                <h4>Blood association</h4>
+                <hr>
+                <h5 class="card-title">12th january,2022</h5>
+                <p class="card-text">Blood association nepal is conducting a blood donation camp at L.A school,Hatiiban at 12th of january. Find more details </p>
+                <a href="/campaigndetails" class="btn btn-primary">View Details</a>
             </div>
         </div>
     </div>
-    <div class="titleheading">
-        <h2>About Us</h2>
-        <img src="images/download.png" alt="" srcset="" width="100%">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit in tempora perspiciatis, nulla quia sapiente
-            velit deserunt aliquid harum totam odit ullam vitae sint laborum voluptatum assumenda? Ad, ducimus
-            voluptatum enim repudiandae voluptatem atque. Animi nam ab ex, cumque illum eius reprehenderit fugit velit
-            impedit omnis laboriosam, voluptate hic. Aspernatur.</p>
-    </div>
+    <!-- featured campaigns ends here -->
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
-        integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+
+    <!-- About us section starts here -->
+    <div class="titleheading">
+        <div class="about-image">
+        <img src="images/about1.jpg" alt="" srcset="" width="100%" style="height: 450px; width: 600px;">
+        </div>
+        <div class="about-content">
+        <h2>About Us</h2>
+        <p>Our Main Objective is to digitalize blood donation system in nepal.
+            <br>
+            <br>
+            
+            In Nepal, the current blood management system is laborious, inefficient, and inconvenient. The information on blood collection and supply is manually recorded in most blood banks' registers.
+            <br>
+            <br>
+
+            Maintaining blood stock inventory is time-consuming, requiring complex back-office paperwork, and maintaining information on blood supply and shortages is a difficult undertaking.From collection through distribution, a social endeavor for a smart, transparent, and holistic blood management service.
+            <br>
+            <br>
+            
+            
+            When it comes to blood, having the proper information at the right moment might mean the difference between life and death.</p>
+    </div>
+    </div>
+    <!-- about us ends here -->
+
+    
 
     <div class="container-fluid" id="list-container">
 
         <div class="row">
-            <div class="col-lg-10 mx-auto">
+            <div class="col-lg-10 mx-auto" id ="list-org">
                 <div class="career-search mb-60">
 
-                    <form action="#" class="career-form mb-60">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-3 my-3">
-                                <div class="input-group position-relative">
-                                    <input type="text" class="form-control" placeholder="Enter Organization Name"
-                                        id="keywords">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3 my-3">
-                                <div class="select-container">
-                                    <select class="custom-select">
-                                        <option selected=""> Select City</option>
-                                        <option value="1">Kathmandu</option>
-                                        <option value="2">Pokhara</option>
-                                        <option value="3">Janakpur</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3 my-3">
-                                <div class="select-container">
-                                    <select class="custom-select">
-                                        <option selected="">Select location </option>
-                                        <option value="1">Ravibhawan</option>
-                                        <option value="2">Budanilkantha</option>
-                                        <option value="3">Dhapasi</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3 my-3">
-                                <button type="button" class="btn btn-lg btn-block btn-light btn-custom"
-                                    id="contact-submit">
-                                    Search
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    <div  class="career-form mb-60" id="org-show" >
+                        
+                        <h2>Organization list</h2>
+                        
+                         </div>
 
                     <div class="filter-result">
 
@@ -382,7 +472,7 @@
                                 </div>
                             </div>
                             <div class="job-right my-4 flex-shrink-0">
-                                <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">View Details</a>
+                                <a href="/orgprofile" class="btn d-block w-100 d-sm-inline-block btn-light">View Profile</a>
                             </div>
                         </div>
 
@@ -408,7 +498,7 @@
                                 </div>
                             </div>
                             <div class="job-right my-4 flex-shrink-0">
-                                <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">View Details</a>
+                                <a href="/orgprofile" class="btn d-block w-100 d-sm-inline-block btn-light">View Profile</a>
                             </div>
                         </div>
 
@@ -434,7 +524,7 @@
                                 </div>
                             </div>
                             <div class="job-right my-4 flex-shrink-0">
-                                <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">View Details</a>
+                                <a href="/orgprofile" class="btn d-block w-100 d-sm-inline-block btn-light">View Profile</a>
                             </div>
                         </div>
 
@@ -459,7 +549,7 @@
                                 </div>
                             </div>
                             <div class="job-right my-4 flex-shrink-0">
-                                <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">View Details</a>
+                                <a href="/orgprofile" class="btn d-block w-100 d-sm-inline-block btn-light">View Profile</a>
                             </div>
                         </div>
 

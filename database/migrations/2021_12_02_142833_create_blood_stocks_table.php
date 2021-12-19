@@ -15,7 +15,7 @@ class CreateBloodStocksTable extends Migration
     {
         Schema::create('blood_stocks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('blood_type','255');
+            $table->string('blood_type','255')->nullable();
             $table->string('blood_group','255');
             $table->date('collected_date');
             $table->string('blood_checkup_report','255');

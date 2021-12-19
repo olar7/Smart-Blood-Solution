@@ -46,9 +46,7 @@ class ComponentController extends Controller
         if (!Gate::allows('permission-add')) {
             return abort(401);
         }
-        $this->validate($request, [
-            'component' => 'required'
-        ]);
+        
         Component::create($request->all());
 
         return redirect()->route('component.index');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\detail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DetailController extends Controller
 {
@@ -14,7 +15,8 @@ class DetailController extends Controller
      */
     public function index()
     {
-        //
+        $detail = Detail::all();
+        return view('admin.detail.index',compact('detail'));
     }
 
     /**
@@ -24,7 +26,8 @@ class DetailController extends Controller
      */
     public function create()
     {
-        //
+        $detail = Detail::all();
+        return view('admin.detail.create',compact('detail'));
     }
 
     /**
@@ -35,7 +38,11 @@ class DetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $input['blood_id'] = Auth::user()->id;
+        Detail::create($input);
+        // dd($input);
+        return redirect()->route('detail.index');
     }
 
     /**
@@ -57,7 +64,7 @@ class DetailController extends Controller
      */
     public function edit(detail $detail)
     {
-        //
+        return view('admin.detail.edit',compact('detail'));
     }
 
     /**
@@ -69,7 +76,8 @@ class DetailController extends Controller
      */
     public function update(Request $request, detail $detail)
     {
-        //
+        $detail->update($request->all());
+        return redirect()->route('detail.index');
     }
 
     /**
@@ -78,8 +86,9 @@ class DetailController extends Controller
      * @param  \App\Models\detail  $detail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(detail $detail)
+    public function destroy($id)
     {
-        //
+        Detail::find($id)->delete();
+        return redirect()->route('detail.index');
     }
 }

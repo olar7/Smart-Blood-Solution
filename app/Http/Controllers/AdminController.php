@@ -17,14 +17,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        if(! Gate::allows('admin-view')){
-            return abort(401);
-        }
+        // if(! Gate::allows('admin-view')){
+        //     return abort(401);
+        // }
         $admin = Admin::all();
-        dd($admin);
-        foreach($admin as $a){
-            dd($a);
-        }
+        // dd($admin);
+        // foreach($admin as $a){
+        //     // dd($a->user->first_name);
+        // }
         return view('admin.admin.index')->with('admins', $admin);
     }
 
@@ -61,7 +61,8 @@ class AdminController extends Controller
             'email' => $request->email,
             'contact' => $request->contact,
             
-            'password' => Hash::make($request->password),'user_type_id' => $request->user_type_id,
+            'password' => Hash::make($request->password),
+            'user_type_id' => $request->user_type_id,
         ]);
         $admin = Admin::create([
             'user_id'=> $user->id,
@@ -88,7 +89,8 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        //
+        
+        return view('admin.admin.edit',compact('admin'));
     }
 
     /**
@@ -100,7 +102,23 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        //
+        $user = $admin->user;
+        
+        $user->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'address' => $request->address,
+            'email' => $request->email,
+            'contact' => $request->contact,
+            
+            'password' => Hash::make($request->password),
+            'user_type_id' => $request->user_type_id,
+        ]);
+        $admin->update([
+            'user_id'=> $user->id,
+            'alt_email' => $request->alt_email
+        ]);
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -109,8 +127,9 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy($id)
     {
-        //
+        Admin::find($id)->delete();
+        return redirect()->route('admin.index');
     }
 }

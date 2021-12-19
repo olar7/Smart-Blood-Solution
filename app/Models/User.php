@@ -52,4 +52,7 @@ class User extends Authenticatable
     public function admin(){
         return $this->hasOne(Admin::class);
     }
+    public function organization(){
+        return $this->hasOne(Organization::class);
+    }
 }

@@ -18,7 +18,9 @@ class UserTypeSeeder extends Seeder
         UserType::truncate();
         $items = [
             ['id' => 1, 'user_type' => 'admin'],
-            ['id' => 2, 'user_type' => 'employee'],
+            ['id' => 2, 'user_type' => 'client'],
+            ['id' => 3, 'user_type' => 'organization'],
+            
             
         ];
         //inserts data in items to database

@@ -14,7 +14,7 @@
                     <label for="user_type">@lang('Users')</label>
                     <input type="text" name="user_type" id="user_type" class="form-control">
                 </div>
-                <!--Show Permissions According to the Permission Component-->
+                
                 <div class="row">
                     @foreach ($components as $component)
                         <div class="col-md-4">

@@ -17,7 +17,7 @@ class CreateOrganizationsTable extends Migration
             $table->bigIncrements('id');
             $table->text('description');
             $table->string('slogan','255');
-            $table->string('logo');
+            $table->string('logo')->nullable();
             $table->bigInteger('user_id')->unsigned();
 
             $table->foreign('user_id')

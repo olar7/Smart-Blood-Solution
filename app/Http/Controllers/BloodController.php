@@ -14,7 +14,8 @@ class BloodController extends Controller
      */
     public function index()
     {
-        //
+        $blood = Blood::all();
+        return view('admin.blood.index',compact('blood'));
     }
 
     /**
@@ -24,7 +25,8 @@ class BloodController extends Controller
      */
     public function create()
     {
-        //
+        $blood = Blood::all();
+        return view('admin.blood.create',compact('blood'));
     }
 
     /**
@@ -35,8 +37,26 @@ class BloodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        // dd($request->file('logo'));
+        if ($image = $request->file('validation')) {
+            $destinationPath = 'images/';
+            $validationImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $validationImage);
+            $input['validation'] = $validationImage;
+
+        $input = $request->all();
+
+        $blood = Blood::create([
+            'blood_group'=> $input['blood_group'],
+            'blood_type'=> $input['blood_type'],
+            'volume'=> $input['volume'],
+            'note'=> $input['note'],
+            'client_id' => 2,
+        ]);
+        return redirect()->route('blood.index');
     }
+}
 
     /**
      * Display the specified resource.
@@ -57,7 +77,7 @@ class BloodController extends Controller
      */
     public function edit(blood $blood)
     {
-        //
+        return view('admin.blood.edit',compact('blood'));
     }
 
     /**
@@ -69,7 +89,8 @@ class BloodController extends Controller
      */
     public function update(Request $request, blood $blood)
     {
-        //
+        $blood->update($request->all());
+        return redirect()->route('blood.index');
     }
 
     /**
@@ -78,8 +99,9 @@ class BloodController extends Controller
      * @param  \App\Models\blood  $blood
      * @return \Illuminate\Http\Response
      */
-    public function destroy(blood $blood)
+    public function destroy($id)
     {
-        //
+        Blood::find($id)->delete();
+        return redirect()->route('blood.index');
     }
 }

@@ -17,11 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('type','255');
             
-            $table->bigInteger('blood_id')->unsigned();
-
-            $table->foreign('blood_id')
-                  ->references('id')
-                  ->on('bloods')->onDelete('cascade');
+            
 
                   $table->date('last_donation');
                   $table->string('number_of_donations','255');

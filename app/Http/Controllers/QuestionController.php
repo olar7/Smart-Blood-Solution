@@ -14,7 +14,8 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $question = Question::all();
+        return view('admin.question.index',compact('question'));
     }
 
     /**
@@ -24,7 +25,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        $question= Question::all();
+        return view('admin.question.create');
     }
 
     /**
@@ -35,7 +37,10 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Question::create($input);
+        // dd($input);
+        return redirect()->route('question.index');
     }
 
     /**
@@ -57,7 +62,7 @@ class QuestionController extends Controller
      */
     public function edit(question $question)
     {
-        //
+        return view('admin.question.edit',compact("question"));
     }
 
     /**
@@ -69,7 +74,8 @@ class QuestionController extends Controller
      */
     public function update(Request $request, question $question)
     {
-        //
+        $question->update($request->all());
+        return redirect()->route('question.index');
     }
 
     /**
@@ -78,8 +84,9 @@ class QuestionController extends Controller
      * @param  \App\Models\question  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(question $question)
+    public function destroy($id)
     {
-        //
+            Question::find($id)->delete();
+        return redirect()->route('question.index');
     }
 }

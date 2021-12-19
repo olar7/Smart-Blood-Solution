@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\blood_stock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class BloodStockController extends Controller
 {
@@ -14,8 +16,18 @@ class BloodStockController extends Controller
      */
     public function index()
     {
-        //
+    $user_type = Auth::user()->user_type_id;
+    if($user_type == 1){
+        $blood_stock = blood_stock::all();
+    }else{
+        $blood = Auth::user()->organization->id;
+        $blood_stock = DB::table('blood_stocks')->where('organization_id',$blood)->get();
     }
+    {
+        $bloodstock = blood_stock::all();
+        return view('bloodstock.index',compact('bloodstock'));
+    }
+}
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +36,7 @@ class BloodStockController extends Controller
      */
     public function create()
     {
-        //
+        return view('bloodstock.create');
     }
 
     /**
@@ -35,7 +47,12 @@ class BloodStockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+
+        $input = $request->all();
+        $input['organization_id'] = Auth::user()->organization->id;
+        blood_stock::create($input);
+        return redirect()->route('bloodstock.index');
     }
 
     /**
@@ -55,9 +72,10 @@ class BloodStockController extends Controller
      * @param  \App\Models\blood_stock  $blood_stock
      * @return \Illuminate\Http\Response
      */
-    public function edit(blood_stock $blood_stock)
+    public function edit(blood_stock $bloodstock)
     {
-        //
+        // $bloodstock = blood_stock::all();
+         return view('bloodstock.edit',compact('bloodstock'));
     }
 
     /**
@@ -67,9 +85,11 @@ class BloodStockController extends Controller
      * @param  \App\Models\blood_stock  $blood_stock
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, blood_stock $blood_stock)
+    public function update(Request $request, blood_stock $bloodstock)
     {
-        //
+
+        $bloodstock->update($request->all());
+        return redirect()->route('bloodstock.index');
     }
 
     /**
@@ -78,8 +98,9 @@ class BloodStockController extends Controller
      * @param  \App\Models\blood_stock  $blood_stock
      * @return \Illuminate\Http\Response
      */
-    public function destroy(blood_stock $blood_stock)
+    public function destroy($id)
     {
-        //
+        blood_stock::find($id)->delete();
+        return redirect()->route('bloodstock.index');
     }
 }

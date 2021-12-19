@@ -7,6 +7,9 @@
                     <h3 class="box-title">@lang('Add users')</h3>
                     <a href="{{route('user_type.create')}}" class="btn btn-success pull-right">@lang('new')</a>
                 </div><!-- /.box-header -->
+                <br>
+                <br>
+                <h2>User List</h2>
                 <div class="box-body">
                     <table id="dataList" class="table table-bordered table-hover">
                         <thead>

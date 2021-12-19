@@ -2,11 +2,22 @@
 
 
 @section('content')
-    <!--Permission Create Box Starts Here-->
+    
+    <style>
+        .form-control{
+            width: 500%;
+            border: 2px solid;
+            
+            border-style: none;
+            border-bottom: 2px solid;
+            border-radius: 1px;
+        }
+</style>
     <div class="box box-primary">
         <div class="box-header">
-            <h3 class="box-title">@lang('create') @lang('')</h3>
+            <h3 class="box-title">Create a new admin</h3>
         </div>
+        <br>
         <div class="box-body">
             <!--Form Start-->
             <form action="{{route('admin.store')}}" method="post">
@@ -45,5 +56,5 @@
                 </div>
             </form>
         </div>
-    </div><!--Permission Create Form Ends Here-->
+    </div>
 @endsection
