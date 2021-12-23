@@ -9,7 +9,7 @@
         <!--Box Body-->
         <div class="box-body">
             <!--Form Starts-->
-            <form action="{{route('campaign.update', ['campaign' => $campaign->id])}}" method="post">
+            <form action="{{route('campaign.update', ['campaign' => $campaign->id])}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                
@@ -22,11 +22,15 @@
                     <label for="user">Date</label>
                     <input type="date" id="" name="date" class="form-control"value="{{$campaign->date}}">
                 </div>
+                <div class="form-group">
+                    <label for="user">photo</label>
+                    <input type="file" id="" name="photo" class="form-control">
+                </div>
         
                 <div class="form-group">
                 <label for="user">Content</label>
                 <br>
-                    <textarea id="" name="content" rows="10" cols="150">
+                    <textarea id="" name="description" rows="10" cols="150">
                     {{$campaign->description}}
                     </textarea>
                 </div>

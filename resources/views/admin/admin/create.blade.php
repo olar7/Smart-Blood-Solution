@@ -20,7 +20,7 @@
         <br>
         <div class="box-body">
             <!--Form Start-->
-            <form action="{{route('admin.store')}}" method="post">
+            <form action="{{route('register.create')}}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="user">First name</label>

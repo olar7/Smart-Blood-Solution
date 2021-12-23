@@ -43,20 +43,18 @@ class OrganizationController extends Controller
     {
         
         $input = $request->all();
-        $name = explode(' ', $input['org_name']);
         
-        $input = $request->all();
-        // dd($request->file('logo'));
         if ($image = $request->file('logo')) {
             $destinationPath = 'images/';
             $organizationImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $organizationImage);
             $input['logo'] = $organizationImage;
-
+            
             // $organization = Organization::create($input);
             // return redirect()->route('organization.index');
         }
         // dd($request->all());
+        $name = explode(' ', $input['org_name']);
         $user = User::create([
             'first_name'=> $name[0],
             'last_name'=>$name[1],
@@ -123,7 +121,7 @@ class OrganizationController extends Controller
         $input = $request->all();
         $name = explode(' ', $input['org_name']);
         // dd($input);
-        $input = $request->all();
+        // $input = $request->all();
         if ($image = $request->file('logo')) {
             $destinationPath = 'images/';
             $organizationImage = date('YmdHis') . "." . $image->getClientOriginalExtension();

@@ -34,8 +34,13 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        $campaign = Campaign::all();
-        return view('admin.campaign.create',compact('campaign'));
+        // $campaign = Campaign::all();
+        $organizations= '';
+        if(Auth::user()->user_type_id == 1){
+            $organizations = Organization::all();
+        }
+        
+        return view('admin.campaign.create',compact('organizations'));
     }
 
     /**
@@ -48,26 +53,30 @@ class CampaignController extends Controller
     {
 
         $input = $request->all();
-        
         if ($image = $request->file('photo')) {
             $path = 'images/';
             $campaignImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             
             $image->move($path, $campaignImage);
             $input['photo'] = $campaignImage;
+            
         }
 
     
-        $input = $request->all();
         
+        if(Auth::user()->user_type_id == 1){
+            $org = $input['organization_id'];
+        }else{
+            $org = Auth::user()->organization->id;
+        }
 
-       $campaign = Campaign::create([
-        'title'=> $input['title'],
-        'photo'=> $input['photo'],
-        'date'=> $input['date'],
-        'description'=> $input['description'],
-        'organization_id' => Auth::user()->organization->id,
-       ]);
+        $campaign = Campaign::create([
+            'title'=> $input['title'],
+            'photo'=> $input['photo'],
+            'date'=> $input['date'],
+            'description'=> $input['description'],
+            'organization_id' => $org,
+        ]);
        
         
 
@@ -114,6 +123,7 @@ class CampaignController extends Controller
      */
     public function update(Request $request, campaign $campaign)
     {
+        
         $campaign->update($request->all());
         return redirect()->route('campaign.index');
     }

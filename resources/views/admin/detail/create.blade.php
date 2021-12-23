@@ -26,25 +26,25 @@
                 @csrf
                 
                 <div class="form-group">
-                    <label for="user">Organization name</label>
+                    <label for="user">Name</label>
                     <input type="text" id="" name="donor_name" class="form-1control">
                 </div>
                 <div class="form-group">
-                    <label for="user">Email</label>
+                    <label for="user">Nationality</label>
                     <input type="text" id="" name="donor_nationality" class="form-1control">
                 </div>
                
                 <div class="form-group">
-                    <label for="user">Slogan</label>
+                    <label for="user">Contact</label>
                     <input type="text" id="" name="donor_contact" class="form-1control">
                 </div>
                
                 <div class="form-group">
-                    <label for="user">address</label>
+                    <label for="user">Address</label>
                     <input type="text" id="" name="donor_location" class="form-1control">
                 </div>
                 <div class="form-group">
-                    <label for="user">Contact</label>
+                    <label for="user">Test Status</label>
                     <input type="text" id="" name="test_status" class="form-1control">
                 </div>
                

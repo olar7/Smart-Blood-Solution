@@ -291,13 +291,19 @@
             width:100%
         }
         #org-show{
-            background-color: #cf3d3c;
+            /* background-color: #cf3d3c;
+             */
+             background-color: #557A95;
             height: 80px;
+            margin-bottom: 30px;
+            
         }
 
         #org-show h2{
             color: white;
             text-align: center;
+            position: relative;
+            top: 20px;
             
         }
         .slider-btn a{
@@ -305,7 +311,40 @@
             color: black;
         }
 
+        #featured-card{
+            height: 600px;
+            overflow: hidden;
+        }
       
+        .card-text {
+            height: 250px;
+            overflow: hidden;
+            
+            
+        }
+        .card-text p{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical;
+        }
+        .btn-campaign{
+            margin: 5px 25px;
+            margin: auto;
+            margin-bottom: 10px;
+        }
+        #org-logo img{
+            width: 120px;
+            height: 120px;
+            /* color: black; */
+            /* border: 2px solid; */
+            border-radius: 50%;
+        }
+        #featured-card img{
+            height: 145px;
+        }
+       
         
     </style>
 </head>
@@ -351,10 +390,7 @@
                     <button><a href="/bedonor">Donate Blood</a></button>
                     <button><a href="/donorreq">Request Blood</a></button>
                   </div>
-              <!-- <div class="slider-btn">
-              <button>Become a Donor</button>
-                <button>Learn More</button>
-              </div> -->
+              
             </div>
           </div>
         </div>
@@ -374,36 +410,23 @@
 
     <div class="featured-content">
 
-        <div class="card" style="width: 18rem;">
-            <img src="images/camp1.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-            <h4>Red Cross</h4>
-                <hr>
-                <h5 class="card-title">19th December,2021</h5>
-                <p class="card-text">Nepal Red Cross  is conducting a blood donation camp at Ravibhawan at 19th of december till 25th of december.</p>
+       
+        @foreach ($campaign as $item)
+            <div class="card" style="width: 18rem;" id="featured-card">
+                <img src="{{url('images/')}}/{{$item->photo}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4>{{$item->title}}</h4>
+                    <hr>
+                    <h5 class="card-title">{{$item->date}}</h5>
+                    <div class="card-text"><p>{{$item->description}}</p></div>
+                    
+                </div>
+                <div class="btn-campaign">
                 <a href="/campaigndetails" class="btn btn-primary">View Details</a>
+                </div>
             </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="images/camp.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-            <h4>Himal Blood Bank</h4>
-                <hr>
-                <h5 class="card-title">25th December,2021</h5>
-                <p class="card-text">Himal Blood Organization is conducting a blood donation camp at Basantapur at 25th of december till 27th of december.Find more details</p>
-                <a href="/campaigndetails" class="btn btn-primary">View Details</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="images/7.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h4>Blood association</h4>
-                <hr>
-                <h5 class="card-title">12th january,2022</h5>
-                <p class="card-text">Blood association nepal is conducting a blood donation camp at L.A school,Hatiiban at 12th of january. Find more details </p>
-                <a href="/campaigndetails" class="btn btn-primary">View Details</a>
-            </div>
-        </div>
+        @endforeach
+        
     </div>
     <!-- featured campaigns ends here -->
 
@@ -443,30 +466,33 @@
 
                     <div  class="career-form mb-60" id="org-show" >
                         
-                        <h2>Organization list</h2>
+                        <h2>Associated Organizations</h2>
                         
                          </div>
 
                     <div class="filter-result">
 
-
+                        
+                        @foreach ($organization as $item)
                         <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
                             <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
-                                <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                                    BKT
+                                <div class="" id="org-logo">
+                                    <img src="{{url('images/')}}/{{$item->logo}}" alt="no logo" srcset="">
                                 </div>
+                                    
+                                
                                 <div class="job-content">
-                                    <h5 class="text-center text-md-left">Bhaktapur Blood Bank</h5>
+                                    <h4 class="text-center text-md-left">{{$item->user->first_name}} {{$item->user->last_name}}</h4>
                                     <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
                                         <li class="mr-md-4">
-                                            <i class="zmdi zmdi-pin mr-2"></i> Dudhpati, Bhaktapur
+                                            <i class="zmdi zmdi-pin mr-2"></i> {{$item->user->address}}
                                         </li>
                                         <li class="mr-md-4">
-                                            <i class="zmdi zmdi-phone mr-2"></i> 01-4412430
+                                            <i class="zmdi zmdi-phone mr-2"></i>{{$item->user->contact}}
                                         </li>
 
                                         <li class="mr-md-4">
-                                            <i class="zmdi zmdi-time mr-2"></i> Full Time
+                                            <i class="zmdi zmdi-email   mr-2"></i> {{$item->user->email}}
                                         </li>
                                     </ul>
                                 </div>
@@ -475,84 +501,13 @@
                                 <a href="/orgprofile" class="btn d-block w-100 d-sm-inline-block btn-light">View Profile</a>
                             </div>
                         </div>
+                        @endforeach
 
-                        <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
-                            <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
-                                <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                                    KTM
-                                </div>
-                                <div class="job-content">
-                                    <h5 class="text-center text-md-left">Central blood bank</h5>
-                                    <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
-                                        <li class="mr-md-4">
-                                            <i class="zmdi zmdi-pin mr-2"></i> Ravibhawan
-                                        </li>
-                                        <li class="mr-md-4">
-                                            <i class="zmdi zmdi-phone mr-2"></i> 01-4107000
-                                        </li>
+                        
 
-                                        <li class="mr-md-4">
-                                            <i class="zmdi zmdi-time mr-2"></i> 5:30 a.m - 9:30 p.m
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="job-right my-4 flex-shrink-0">
-                                <a href="/orgprofile" class="btn d-block w-100 d-sm-inline-block btn-light">View Profile</a>
-                            </div>
-                        </div>
+                        
 
-                        <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
-                            <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
-                                <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                                    KTM
-                                </div>
-                                <div class="job-content">
-                                    <h5 class="text-center text-md-left">Himal Hospital Blood Bank</h5>
-                                    <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
-                                        <li class="mr-md-4">
-                                            <i class="zmdi zmdi-pin mr-2"></i> Gyaneshwar, Kathmandu
-                                        </li>
-                                        <li class="mr-md-4">
-                                            <i class="zmdi zmdi-phone mr-2"></i> 01-5427033
-                                        </li>
-
-                                        <li class="mr-md-4">
-                                            <i class="zmdi zmdi-time mr-2"></i> Full Time
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="job-right my-4 flex-shrink-0">
-                                <a href="/orgprofile" class="btn d-block w-100 d-sm-inline-block btn-light">View Profile</a>
-                            </div>
-                        </div>
-
-                        <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
-                            <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
-                                <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                                    KTM
-                                </div>
-                                <div class="job-content">
-                                    <h5 class="text-center text-md-left"> Nobel Hospital Blood Bank</h5>
-                                    <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
-                                        <li class="mr-md-4">
-                                            <i class="zmdi zmdi-pin mr-2"></i> Sinamangal, Kathmandu
-                                        </li>
-                                        <li class="mr-md-4">
-                                            <i class="zmdi zmdi-phone mr-2"></i> 01-4110842
-                                        </li>
-                                        <li class="mr-md-4">
-                                            <i class="zmdi zmdi-time mr-2"></i> 5:30 A.M to 7:00 P.M
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="job-right my-4 flex-shrink-0">
-                                <a href="/orgprofile" class="btn d-block w-100 d-sm-inline-block btn-light">View Profile</a>
-                            </div>
-                        </div>
-
+                        
                     </div>
                 </div>
 

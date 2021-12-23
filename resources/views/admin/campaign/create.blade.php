@@ -11,7 +11,17 @@
             <!--Form Start-->
             <form action="{{route('campaign.store')}}" method="post" enctype="multipart/form-data" >
                 @csrf
-               
+                @if ($organizations != '')
+                    <div class="form-group">
+                        <label for="">Organization</label>
+                        <select name="organization_id" id="" class="form-control">
+                            <option value="" disabled>Select Organization</option>
+                            @foreach ($organizations as $org)
+                                <option value="{{$org->id}}">{{$org->user->first_name}} {{$org->user->last_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="user">Campaign Title</label>
                     <input type="text" id="" name="title" class="form-control">

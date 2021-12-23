@@ -24,26 +24,29 @@
 <div class="main-container">
     <h2 style="text-align: center;">Fill The required information</h2>
     <div class="form-group">
-        <form action="">
+        <form method="POST" action="{{route('bedonor.store')}}">
+            @csrf
+
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Full Name</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Enter Your Full Name">
+                    placeholder="Enter Your Full Name" name="donor_name">
             </div>
+
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Contact no</label>
                 <input type="number" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Enter your Contact Number">
+                    placeholder="Enter your Contact Number" name="donor_contact">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Address</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Enter Your current location">
+                    placeholder="Enter Your current location" name="donor_location">
             </div>
 
             <div class="mb-3">
                 <label for="formGroupExampleInput2">Blood Group</label>
-                <select id="inputState" class="form-control">
+                <select id="inputState" class="form-control" name="test_status">
                     <option selected>Choose Blood Type</option>
                     <option>A+ ve</option>
                     <option>A- ve</option>
@@ -59,7 +62,7 @@
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nationality</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Enter Your Nationality">
+                    placeholder="Enter Your Nationality" name="donor_nationality">
             </div>
 
             <br>

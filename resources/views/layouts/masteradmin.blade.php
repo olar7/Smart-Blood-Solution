@@ -6,13 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <!-- bootstrap link -->
  
 
 
 
   <style>
+    body{
+      font-family: 'Lato', sans-serif;
+    }
     /* sidebar style */
     #wrapper {
       padding-left: 0;
@@ -188,7 +191,7 @@
   <!-- navbar section -->
 
   <nav class="navbar navbar-dark bg-dark">
-    <a href="/index"><span class="navbar-brand mb-0 h1">Blood Bank</span></a>
+    <a href="/"><span class="navbar-brand mb-0 h1">Blood Bank</span></a>
             
 
      <div class="dropdown">

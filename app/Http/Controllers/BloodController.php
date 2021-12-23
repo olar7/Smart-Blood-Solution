@@ -38,19 +38,19 @@ class BloodController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        // dd($request->file('logo'));
         if ($image = $request->file('validation')) {
             $destinationPath = 'images/';
             $validationImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $validationImage);
             $input['validation'] = $validationImage;
 
-        $input = $request->all();
+       
 
         $blood = Blood::create([
             'blood_group'=> $input['blood_group'],
             'blood_type'=> $input['blood_type'],
             'volume'=> $input['volume'],
+            'validation'=> $input['validation'],
             'note'=> $input['note'],
             'client_id' => 2,
         ]);

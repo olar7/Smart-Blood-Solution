@@ -10,4 +10,8 @@ class detail extends Model
     use HasFactory;
 
     protected $fillable = ['id','description','test_status','donor_name','donor_nationality','donor_contact','donor_location','blood_id'];
+
+    public function blood(){
+        return $this->belongsTo(Blood::class);
+}
 }

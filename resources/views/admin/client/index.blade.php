@@ -39,6 +39,9 @@
                                                     <tr>
                                                         <td>{{$count}}</td>
                                                         <td>{{$client->user->first_name}}</td>
+                                                        <td>{{$client->user->first_name}}</td>
+                                                        <td>{{$client->user->first_name}}</td>
+                                                        <td>{{$client->user->first_name}}</td>
                                                         
         
                                                        

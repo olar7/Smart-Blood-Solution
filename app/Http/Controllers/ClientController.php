@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\client;
+
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -15,8 +16,8 @@ class ClientController extends Controller
     public function index()
     {
             
-        $client = Client::all();
-        return view('admin.client.index',compact('client'));
+        $client = Client::orderBy('created_at','DESC')->take(5)->get();
+        return view('admin.client.index')->with('client',$client);
     }
 
     /**

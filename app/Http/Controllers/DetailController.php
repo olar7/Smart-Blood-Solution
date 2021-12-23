@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\detail;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,8 +40,18 @@ class DetailController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $input['blood_id'] = Auth::user()->id;
-        Detail::create($input);
+
+        $detail = Detail::create([
+            'description'=> $input['description'],
+            'donor_name'=> $input['donor_name'],
+            'donor_nationality'=> $input['donor_nationality'],
+            'donor_contact'=> $input['donor_contact'],
+            'donor_location'=> $input['donor_location'],
+            'test_status'=> $input['test_status'],
+            'blood_id' => 7,
+        ]);
+        // $input['blood_id'] = Auth::user()->id;
+        // Detail::create($input);
         // dd($input);
         return redirect()->route('detail.index');
     }

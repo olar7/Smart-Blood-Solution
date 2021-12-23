@@ -31,20 +31,19 @@
           </tr>
         </thead>
         <tbody>
+          
+              @php($count = 1)
+          @foreach ($detail as $item)
           <tr>
-            <th scope="row">1</th>
-            <td>Ram Thapa</td>
-            <td>01-4489153</td>
-            <td> O-ve</td>
-            <td> lalitpur</td>
+            <th scope="row">{{$count}}</th>
+            <td>{{$item->donor_name}}</td>
+            <td>{{$item->donor_contact}}</td>
+            <td>{{$item->test_status}}</td>
+            <td> {{$item->donor_location}}</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Ram Thapa</td>
-            <td>01-4489153</td>
-            <td> O-ve</td>
-            <td> lalitpur</td>
-          </tr>
+          @php($count++)
+          @endforeach
+         
           
         </tbody>
       </table>

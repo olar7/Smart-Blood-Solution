@@ -15,19 +15,18 @@ class CreateDetailsTable extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('description');
-            $table->string('test_status','255');
+            $table->text('description')->nullable();
+            $table->string('test_status','255')->nullable();
             
             $table->bigInteger('blood_id')->unsigned();
 
             $table->foreign('blood_id')
                   ->references('id')
                   ->on('bloods')->onDelete('cascade');
-
                   $table->string('donor_name','255');
-                  $table->string('donor_nationality','255');
+                  $table->string('donor_nationality','255')->nullable();
                   $table->string('donor_contact','255');
-                  $table->string('donor_location','255');
+                  $table->string('donor_location','255')->nullable();
 
 
             $table->timestamps();

@@ -22,7 +22,7 @@
         <!--Box Body-->
         <div class="box-body">
             <!--Form Starts-->
-            <form action="{{route('organization.update', ['organization' => $organization->id])}}" method="post">
+            <form action="{{route('organization.update', ['organization' => $organization->id])}}" method="post"  enctype="multipart/form-data">
                 @csrf
                 @method('patch')
                
@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group">
                     <label for="user">logo</label>
-                    <input type="file" id="frm-logo" name="logo" value="{{$organization->logo}}" class="form-control" >
+                    <input type="file" id="frm-logo" name="logo" value="" class="form-control" >
                 </div>
                 <div class="form-group">
                 <label for="user">Description</label>

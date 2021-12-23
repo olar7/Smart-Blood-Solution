@@ -15,25 +15,31 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-Route::get('/', function () {
-    return redirect('index');
-});
-route::view('index',"index");
+// Route::get('/', function () {
+//     return redirect('index');
+// });
+// route::view('index',"index");
 
-// route::view('admin',"adminDash");
 
-// route::view('addUsers',"addUsers");
-// route::view('admailbox',"mailbox");
-// route::view('donorreq',"donorreq");
-// route::view('bedonor',"bedonor");
-// route::view('profile',"userprofile");
-// route::view('donorlist',"donorlist");
+Route::get('/', [App\Http\Controllers\Landing::class, 'index'])->name('index');
+Route::get('donorreq', [App\Http\Controllers\RequestBloodController::class, 'index'])->name('donorreq.index');
+Route::post('donorreq', [App\Http\Controllers\RequestBloodController::class, 'store'])->name('donorreq.store');
+Route::get('bedonor', [App\Http\Controllers\DonateBloodController::class, 'index'])->name('bedonor.index');
+Route::post('bedonor', [App\Http\Controllers\DonateBloodController::class, 'store'])->name('bedonor.store');
+Route::get('donorlist', [App\Http\Controllers\donor::class, 'index'])->name('donorlist');
+Route::get('campaigndetails', [App\Http\Controllers\CampaignDetailController::class, 'index'])->name('campaigndetails');
+
+route::view('admin',"adminDash");
+
+route::view('addUsers',"addUsers");
+route::view('admailbox',"mailbox");
+route::view('profile',"userprofile");
 // route::view('campaigndetails',"campaigndetails");
-// route::view('orgprofile',"organization/profile");
+route::view('orgprofile',"organization/profile");
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
@@ -50,21 +56,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     route::resource('question',App\Http\Controllers\QuestionController::class);
     route::resource('blood',App\Http\Controllers\BloodController::class);
     route::resource('detail',App\Http\Controllers\DetailController::class);
+    
    
 
 });
 Route::group(['prefix' => 'org', 'middleware' => 'auth'], function () {
     route::resource('bloodstock',App\Http\Controllers\BloodStockController::class);
 });
+
+    Route::group(['prefix' => 'client', 'middleware' => 'auth'], function () {
+});
 // mail route
-
-
 Route::get('send-mail', function () {
    
     $details = [
         'title' => 'Hello',
-        'body' => 'This is for testing'
+        'body' => 'Mero ta bhayo mail'
     ];
+    
    
     \Mail::to('ashwinkhadka911@gmail.com')->send(new \App\Mail\MyTestMail($details));
    
