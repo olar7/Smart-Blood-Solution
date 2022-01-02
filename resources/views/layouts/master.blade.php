@@ -73,7 +73,10 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="donorlist">Available Donors</a>
+          <a class="nav-link active" href="/blogpage">Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/donorlist">Available Donors</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="/bedonor" >Donate Blood</a>
@@ -83,9 +86,6 @@
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Contact us</a>
         </li>
         
         <div id= "login-icon">
@@ -112,7 +112,7 @@
   </footer>
 </div>
 
-    
+<script src="https://kit.fontawesome.com/1aea98032a.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

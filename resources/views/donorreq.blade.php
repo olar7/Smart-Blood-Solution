@@ -33,23 +33,27 @@
     </div>
     <div class="form-container">
       <h2 style="text-align: center;">Request a Donor </h2>
-      <form action="{{route('donorreq.store')}}" method="POST">
+      <form action="{{route('guest.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your Full Name" name="donor_name">
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your Full Name" name="first_name">
         </div>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Contact no</label>
-          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Contact Number"  name="donor_contact">
+          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Contact Number"  name="contact">
         </div>
     <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Location</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your current location"  name="donor_location">
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your current location"  name="location">
+</div>
+    <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Upload a picture</label>
+  <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your current location"  name="validation">
 </div>
 <div class="mb-3">
   <label for="formGroupExampleInput2">Blood Group</label>
-  <select id="inputState" class="form-control"  name="test_status">
+  <select id="inputState" class="form-control"  name="blood_group">
       <option selected>Choose Blood Type</option>
       <option>A+ ve</option>
       <option>A- ve</option>
@@ -64,7 +68,7 @@
 </div>
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Message Us</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Your message to our Available donors"  name="description"></textarea>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Your message to our Available donors"  name="note"></textarea>
 </div>
 <div class="form-btn">
 <button type="submit" class="btn btn-primary" id="form-button">Send</button>

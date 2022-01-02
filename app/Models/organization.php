@@ -13,4 +13,11 @@ class organization extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function bloodstock(){
+        return $this->hasMany(blood_stock::class);
+    }
+    public function campaigns(){
+        return $this->hasMany(Campaign::class);
+    }
+
 }

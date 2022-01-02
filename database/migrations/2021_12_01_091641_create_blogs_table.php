@@ -18,6 +18,9 @@ class CreateBlogsTable extends Migration
             $table->string('title','255');
             $table->date('date');
             $table->text('content');
+            $table->string('author')->nullable();
+            $table->string('image')->nullable();
+            
             
 
 

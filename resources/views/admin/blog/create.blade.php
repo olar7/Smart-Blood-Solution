@@ -9,17 +9,28 @@
         <hr>
         <div class="box-body">
             <!--Form Start-->
-            <form action="{{route('blog.store')}}" method="post" >
+            <form action="{{route('blog.store')}}" method="post" enctype="multipart/form-data" >
                 @csrf
+                
                
                 <div class="form-group">
                     <label for="user">Blog Title</label>
                     <input type="text" id="" name="title" class="form-control">
                 </div>
+
+                <div class="form-group">
+                    <label for="user">Author Name</label>
+                    <input type="text" id="" name="author" class="form-control">
+                </div>
                 
                 <div class="form-group">
                     <label for="user">Date</label>
                     <input type="date" id="" name="date" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="user">Image</label>
+                    <input type="file" id="" name="image" class="form-control">
                 </div>
         
                 <div class="form-group">

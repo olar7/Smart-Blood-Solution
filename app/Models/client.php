@@ -10,4 +10,7 @@ class client extends Model
     use HasFactory;
 
     protected $fillable = ['id','user_id','blood_group'];
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

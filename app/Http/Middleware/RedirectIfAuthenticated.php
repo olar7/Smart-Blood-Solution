@@ -26,7 +26,7 @@ class RedirectIfAuthenticated
                 if (Auth::user()->user_type_id==1){
                     return redirect(RouteServiceProvider::HOME);
                 }
-                elseif (Auth::user()->user_type_id==3) {
+                elseif(Auth::user()->user_type_id==3) {
                     return redirect(RouteServiceProvider::ORGHOME);
                 }
                 else {
@@ -34,6 +34,8 @@ class RedirectIfAuthenticated
                 }
             }
         }
+
+        
 
         return $next($request);
     }

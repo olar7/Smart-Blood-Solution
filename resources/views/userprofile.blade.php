@@ -61,6 +61,12 @@
   bottom: 0;
   display: none;
 }
+
+#profile-img img{
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
     </style>
 
     <!-- container section -->
@@ -71,8 +77,10 @@
                 <div class="col-md-4 mb-3">
                   <div class="card">
                     <div class="card-body">
-                      <div class="d-flex flex-column align-items-center text-center">
-                        <img src="images/ben.jpg" alt="Admin" class="rounded-circle" width="150">
+                      <div class="d-flex flex-column align-items-center text-center" >
+                        <div id="profile-img">
+                        <img src="images/ben.jpg" alt="Admin" class="" width="">
+                        </div>
                         <div class="mt-3">
                           <h4>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h4>
                           <p class="text-secondary mb-1"><strong>Blood Type:</strong> A+ve</p>

@@ -18,9 +18,11 @@
                                     <thead>
                                         <tr>
                                             <th>SN</th>
+                                            <th>Blog Image</th>
                                             <th>Blog Title</th>
                                             <th>Date</th>
                                             <th>Content</th>
+                                            <th>Author</th>
                                             
 
                                             
@@ -37,9 +39,11 @@
                                                 @if ($blog)
                                                     <tr>
                                                         <td>{{$count}}</td>
+                                                        <td><img src="{{url('images/')}}/{{$blog->image}}" alt="" height ="100" width="100"></td>
                                                         <td>{{$blog->title}}</td>
                                                         <td>{{$blog->date}}</td>
                                                         <td>{{$blog->content}}</td>
+                                                        <td>{{$blog->author}}</td>
         
                                                         <td>{{$blog->created_at->toFormattedDateString()}}</td>
                                                        

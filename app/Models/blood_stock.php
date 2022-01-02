@@ -13,5 +13,8 @@ class blood_stock extends Model
 
     public function organization(){
         return $this->belongsTo(Organization::class);
+
+
 }
+
 }

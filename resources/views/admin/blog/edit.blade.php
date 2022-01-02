@@ -9,7 +9,7 @@
         <!--Box Body-->
         <div class="box-body">
             <!--Form Starts-->
-            <form action="{{route('blog.update', ['blog' => $blog->id])}}" method="post">
+            <form action="{{route('blog.update', ['blog' => $blog->id])}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                
@@ -17,11 +17,21 @@
                     <label for="user">Blog Title</label>
                     <input type="text" id="" name="title" class="form-control" value="{{$blog->title}}">
                 </div>
+                <div class="form-group">
+                    <label for="user">Author Name</label>
+                    <input type="text" id="" name="author" class="form-control" value="{{$blog->author}}">
+                </div>
                 
                 <div class="form-group">
                     <label for="user">Date</label>
                     <input type="date" id="" name="date" class="form-control"value="{{$blog->date}}">
                 </div>
+
+                <div class="form-group">
+                    <label for="user">Image</label>
+                    <input type="file" id="" name="image" class="form-control"value="{{$blog->image}}">
+                </div>
+                
         
                 <div class="form-group">
                 <label for="user">Content</label>

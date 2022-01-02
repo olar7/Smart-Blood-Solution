@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\organization;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\blood_stock;
+use App\Models\Campaign;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use DB;
@@ -159,5 +161,14 @@ class OrganizationController extends Controller
     {
         Organization::find($id)->delete();
         return redirect()->route('organization.index');
+    }
+    public function orgProfile($id){
+
+        $organization = Organization::find($id);
+        // dd($organization);
+        $bloodstock = $organization->bloodstock;
+        // dd($bloodstock);
+        $campaign = $organization->campaigns;
+        return view('organization.profile', compact('organization'))->with('campaign',$campaign)->with('bloodstock',$bloodstock);
     }
 }

@@ -422,7 +422,7 @@
                     
                 </div>
                 <div class="btn-campaign">
-                <a href="/campaigndetails" class="btn btn-primary">View Details</a>
+                <a href="{{route('campaignView',['id'=>$item->id])}}" class="btn btn-primary">View Details</a>
                 </div>
             </div>
         @endforeach
@@ -498,7 +498,7 @@
                                 </div>
                             </div>
                             <div class="job-right my-4 flex-shrink-0">
-                                <a href="/orgprofile" class="btn d-block w-100 d-sm-inline-block btn-light">View Profile</a>
+                                <a href="{{route('orgprofile',['id'=>$item->id])}}" class="btn d-block w-100 d-sm-inline-block btn-light">View Profile</a>
                             </div>
                         </div>
                         @endforeach

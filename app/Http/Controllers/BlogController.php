@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\blog;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -29,8 +30,12 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $blog = Blog::all();
-        return view('admin.blog.create')->with('blogs', $blog);
+        // $blog = Blog::all();
+        $admin= '';
+        if(Auth::user()->user_type_id == 1){
+            $admin = Admin::all();
+        }
+        return view('admin.blog.create')->with('admin', $admin);
     }
 
     /**
@@ -41,10 +46,31 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-
         $input = $request->all();
-        $input['admin_id'] = Auth::user()->id;
-        Blog::create($input);
+        
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/';
+            $blogImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $blogImage);
+            $input['image'] = $blogImage;
+        }
+
+        
+        
+        // $admin = Auth::user()->admin->id;
+        // dd($admin);
+        
+        $blog = Blog::create([
+            'admin_id'=> Auth::user()->admin->id,
+            'title'=> $input['title'],
+            'author'=> $input['author'],
+            'date'=> $input['date'],
+            'image'=> $input['image'],
+            'content'=> $input['content'],
+        ]);
+        
+        // $input['admin_id'] = Auth::user()->admin->id;
+        // Blog::create($input);
         // dd($input);
         return redirect()->route('blog.index');
 
@@ -85,9 +111,27 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, blog $blog)
+    
     {
+        $input = $request->all();
+        if ($image = $request->file('image')) {
+            $destinationPath = 'images/';
+            $organizationImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $organizationImage);
+            $input['image'] = $organizationImage;
+
+        }
         
-        $blog->update($request->all());
+        $admin = $blog->admin;
+        $blog->update([
+            'admin_id'=> $admin->id,
+            'title'=> $input['title'],
+            'author'=> $input['author'],
+            'date'=> $input['date'],
+            'image'=> $input['image'],
+            'content'=> $input['content'],
+        ]);
+        // $blog->update($request->all());
         return redirect()->route('blog.index');
     }
 
@@ -101,5 +145,11 @@ class BlogController extends Controller
     {
         Blog::find($id)->delete();
         return redirect()->route('blog.index');
+    }
+
+    public function blogView($id){
+
+        $blog = Blog::find($id);
+        return view('blogdetails',compact('blog'));
     }
 }

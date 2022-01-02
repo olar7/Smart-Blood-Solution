@@ -123,8 +123,26 @@ class CampaignController extends Controller
      */
     public function update(Request $request, campaign $campaign)
     {
-        
-        $campaign->update($request->all());
+        $input = $request->all();
+        if ($image = $request->file('photo')) {
+            $path = 'images/';
+            $campaignImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            
+            $image->move($path, $campaignImage);
+            $input['photo'] = $campaignImage;
+            
+        }
+
+
+        $campaign->update([
+            'title'=> $input['title'],
+            'photo'=> $input['photo'],
+            'date'=> $input['date'],
+            'description'=> $input['description'],
+            'organization_id' => 6,
+        ]);
+       
+        // $campaign->update($request->all());
         return redirect()->route('campaign.index');
     }
 
@@ -138,5 +156,10 @@ class CampaignController extends Controller
     {
         Campaign::find($id)->delete();
         return redirect()->route('campaign.index');
+    }
+
+    public function campaignView($id){
+        $campaign = Campaign::find($id);
+        return view('campaigndetails',compact('campaign'));
     }
 }

@@ -1,6 +1,18 @@
 @extends('layouts.masteradmin')
 
 @section('content')
+<style>
+   
+    .row{
+        margin-right: 20px;
+    }
+    #per_component{
+        border: 2px  solid;
+        margin: 2px 5px;
+
+    }
+   
+</style>
     <!--user_type Edit Box Starts Here-->
     <div class="box">
         <div class="box-header">
@@ -18,7 +30,7 @@
                 </div>
                 <div class="row">
                     @foreach ($components as $component)
-                        <div class="col-md-4">
+                        <div class="col-md-4" id="per_component">
                             <label for="">{{$component->component}} @lang('')</label>
                             @foreach ($permissions as $permission)
                                 @if ($permission->component_id == $component->id)
@@ -37,6 +49,7 @@
                         </div>
                     @endforeach
                 </div>
+                <br>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">@lang('update')</button>
                 </div>

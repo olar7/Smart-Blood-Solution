@@ -36,6 +36,10 @@ class BloodStockController extends Controller
      */
     public function create()
     {
+        // $bloodstock= '';
+        // if(Auth::user()->user_type_id == 1){
+        //     $bloodstock = blood_stock::all();
+        // }
         return view('bloodstock.create');
     }
 
@@ -45,9 +49,8 @@ class BloodStockController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
-    
 
         $input = $request->all();
         $input['organization_id'] = Auth::user()->organization->id;

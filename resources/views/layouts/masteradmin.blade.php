@@ -234,7 +234,7 @@
         
 
         <li>
-          <a href="/admailbox"> Inbox</a>
+          <a href="/admin/adminvalidation"> Inbox</a>
         </li>
         
         
@@ -247,7 +247,7 @@
 
         @can('client-view')
         <li>
-          <a href="/admin/clientlist"> Clients</a>
+          <a href="/admin/clientlist"> Client</a>
         </li>
         @endcan
 
@@ -265,7 +265,7 @@
 
         @can('user_type-access')
         <li>
-          <a href="/admin/user_type">Users</a>
+          <a href="/admin/user_type">Permissions</a>
         </li>
         @endcan
 

@@ -29,21 +29,20 @@
 </style>
 <div class="campaign-container">
 
-    @foreach ($campaign as $item)
+   
         
     <div class="campaign-head">
-        <h1>{{$item->title}}</h1>
+        <h1>{{$campaign->title}}</h1>
         <br>
-        <h3>{{$item->date}}</h3>
+        <h3>{{$campaign->date}}</h3>
     </div>
     <div class="campaign-image">
-        <img src="{{url('images/')}}/{{$item->photo}}" alt="" srcset="">
+        <img src="{{url('images/')}}/{{$campaign->photo}}" alt="" srcset="">
     </div>
     <br>
     <div class="campaign-title">
-        <p>{{$item->description}}</p>
+        <p>{{$campaign->description}}</p>
         
     </div>
-    @endforeach
 </div>
 @endsection
