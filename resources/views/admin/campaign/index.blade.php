@@ -19,10 +19,11 @@
                                         <tr>
                                             <th>SN</th>
                                             <th>Campaign Image</th>
-                                            <th>Organization</th>
+                                            {{-- <th>Organization</th> --}}
                                             <th>Campaign Title</th>
                                             <th>Campaign Date</th>
                                             <th>Description</th>
+                                           
                                             
 
                                             <th>@lang('Action')</th>
@@ -40,11 +41,10 @@
                                                     <tr>
                                                         <td>{{$count}}</td>
                                                         <td><img src="{{url('images/')}}/{{$campaign->photo}}" alt="" height ="100" width="100"></td>
-                                                       
                                                         <td>{{$campaign->title}}</td>
                                                         <td>{{$campaign->date}}</td>
-                
                                                         <td>{{$campaign->description}}</td>
+                                                        
         
                                                         
                                                        

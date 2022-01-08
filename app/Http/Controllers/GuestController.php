@@ -57,7 +57,8 @@ class GuestController extends Controller
             
         ]);
         
-        return redirect()->route('guest.index');
+        // return redirect()->route('guest.index');
+        return view ('contactform');
     }
 
     /**

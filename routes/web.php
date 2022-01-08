@@ -16,26 +16,31 @@ use Illuminate\Support\Facades\Mail;
 */
 
 // Route::get('/', function () {
-//     return redirect('index');
-// });
-// route::view('index',"index");
-
-
-Route::get('/', [App\Http\Controllers\Landing::class, 'index'])->name('index');
-
-// Route::get('donorreq', [App\Http\Controllers\RequestBloodController::class, 'index'])->name('donorreq.index');
-// Route::post('donorreq', [App\Http\Controllers\RequestBloodController::class, 'store'])->name('donorreq.store');
-Route::get('bedonor', [App\Http\Controllers\DonateBloodController::class, 'index'])->name('bedonor.index');
-Route::post('bedonor', [App\Http\Controllers\DonateBloodController::class, 'store'])->name('bedonor.store');
-Route::get('donorlist', [App\Http\Controllers\donor::class, 'index'])->name('donorlist');
-Route::get('campaignView/{id}', [App\Http\Controllers\CampaignController::class, 'campaignView'])->name('campaignView');
-Route::get('blogpage', [App\Http\Controllers\BlogViewController::class, 'index'])->name('blogpage.index');
-// Route::get('blogpage', [App\Http\Controllers\BlogViewController::class, 'profile'])->name('blogpage.profile');
+    //     return redirect('index');
+    // });
+    // route::view('index',"index");
+    
+    Route::get('/sms',[App\Http\Controllers\SmsController::class,'index'])->name('sms.index');
+    
+    Route::get('/', [App\Http\Controllers\Landing::class, 'index'])->name('index');
+    
+    // Route::get('donorreq', [App\Http\Controllers\RequestBloodController::class, 'index'])->name('donorreq.index');
+    // Route::post('donorreq', [App\Http\Controllers\RequestBloodController::class, 'store'])->name('donorreq.store');
+    Route::get('bedonor', [App\Http\Controllers\DonateBloodController::class, 'index'])->name('bedonor.index');
+    Route::post('bedonor', [App\Http\Controllers\DonateBloodController::class, 'store'])->name('bedonor.store');
+    Route::get('donorlist', [App\Http\Controllers\donor::class, 'index'])->name('donorlist');
+    Route::get('campaignView/{id}', [App\Http\Controllers\CampaignController::class, 'campaignView'])->name('campaignView');
+    Route::get('blogpage', [App\Http\Controllers\BlogViewController::class, 'index'])->name('blogpage.index');
+    // Route::get('blogpage', [App\Http\Controllers\BlogViewController::class, 'profile'])->name('blogpage.profile');
 Route::get('orgprofile/{id}', [App\Http\Controllers\OrganizationController::class, 'orgProfile'])->name('orgprofile');
 Route::get('blogView/{id}', [App\Http\Controllers\BlogController::class, 'blogView'])->name('blogView');
 
 Route::post('donorreq', [App\Http\Controllers\GuestController::class, 'store'])->name('guest.store');
 Route::get('donorreq', [App\Http\Controllers\GuestController::class, 'index'])->name('guest.index');
+Route::post('contactform', [App\Http\Controllers\ContactFormController::class, 'store'])->name('contactform.store');
+
+// sms route
+// Route::get('donorreq', [App\Http\Controllers\SmsController::class, 'index'])->name('sms.index');
 // Route::resource('donorreq', [App\Http\Controllers\GuestController::class]);
 
 // route::view('admin',"adminDash");
@@ -61,15 +66,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     route::resource('organization',App\Http\Controllers\OrganizationController::class);
     route::resource('blog',App\Http\Controllers\BlogController::class);
     route::resource('campaign',App\Http\Controllers\CampaignController::class);
-    // route::resource('bloodstock',App\Http\Controllers\BloodStockController::class);
+    route::resource('bloodstock',App\Http\Controllers\BloodStockController::class);
     route::resource('clientlist',App\Http\Controllers\ClientController::class);
+
     route::resource('question',App\Http\Controllers\QuestionController::class);
     route::resource('blood',App\Http\Controllers\BloodController::class);
     route::resource('detail',App\Http\Controllers\DetailController::class);
     Route::get('adminvalidation', [App\Http\Controllers\GuestController::class, 'show'])->name('guest.show');
     Route::get('email-dispatch/{id}', [App\Http\Controllers\EmailController::class, 'emailDispatch'])->name('email.dispatch');
+    Route::get('sms-dispatch/{id}', [App\Http\Controllers\EmailController::class, 'smsDispatch'])->name('sms.dispatch');
     Route::get('validation/{id}', [App\Http\Controllers\AdminDash::class, 'show'])->name('validation.show');
     Route::get('validationdel/{id}', [App\Http\Controllers\AdminDash::class, 'destroy'])->name('validation.destroy');
+    Route::get('contactform', [App\Http\Controllers\ContactFormController::class, 'index'])->name('contactform.index');
+    Route::get('messageview/{id}', [App\Http\Controllers\ContactFormController::class, 'show'])->name('messageview.show');
+    Route::get('messagedel/{id}', [App\Http\Controllers\ContactFormController::class, 'delete'])->name('messageview.delete');
     
     
     
@@ -95,3 +105,6 @@ Route::get('send-mail', function () {
    
     dd("Email is Sent.");
 });
+
+// sms route
+

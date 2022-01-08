@@ -18,5 +18,6 @@ Extra Message : {{$adminvalidation->note}}
 <br>
 <br>
 <a href="{{route('email.dispatch',['id' => $adminvalidation->id])}}" class="btn btn-primary">Dispatch Message</a>
+<a href="{{route('sms.dispatch',['id' => $adminvalidation->id])}}" class="btn btn-primary">Dispatch SMS</a>
 
 @endsection

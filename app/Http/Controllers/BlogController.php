@@ -59,9 +59,9 @@ class BlogController extends Controller
         
         // $admin = Auth::user()->admin->id;
         // dd($admin);
-        
+       
         $blog = Blog::create([
-            'admin_id'=> Auth::user()->admin->id,
+            'admin_id'=> Auth::user()->id,
             'title'=> $input['title'],
             'author'=> $input['author'],
             'date'=> $input['date'],

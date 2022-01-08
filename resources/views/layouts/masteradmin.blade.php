@@ -232,9 +232,11 @@
           <a href="/admin">Dashboard</a>
         </li>
         
-
         <li>
-          <a href="/admin/adminvalidation"> Inbox</a>
+          <a href="/admin/adminvalidation"> Blood Requests</a>
+        </li>
+        <li>
+          <a href="/admin/contactform"> Inbox</a>
         </li>
         
         

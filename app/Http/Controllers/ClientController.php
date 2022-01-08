@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\client;
 
+
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -15,9 +16,10 @@ class ClientController extends Controller
      */
     public function index()
     {
-            
-        $client = client::orderBy('created_at','DESC')->take(5)->get();
-        return view('admin.client.index')->with('client',$client);
+        // $client = client::orderBy('created_at','DESC')->take(5)->get();
+        // return view('admin.client.index')->with('client',$client);
+        $client = client::all();
+        return view('admin.client.index',compact('client'));
     }
 
     /**

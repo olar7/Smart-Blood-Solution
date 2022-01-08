@@ -520,26 +520,27 @@
     <!-- Contact Form section -->
     <div class="contactform">
         <h2>Contact Us</h2>
-        <form action="">
+        <form action="{{route('contactform.store')}}" method="post">
+            @csrf
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name" name="full_name">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Subject</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Subject">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Subject" name="subject">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label" >Message us</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write your Message here"></textarea>
+                <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write your Message here"></textarea>
             </div>
             <br>
             <hr>
-            <button type="button" class="btn btn-success">Send</button>
+            <button type="submit" class="btn btn-success">Send</button>
         </form>
     </div>
 

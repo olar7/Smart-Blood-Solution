@@ -62,8 +62,6 @@ class CampaignController extends Controller
             
         }
 
-    
-        
         if(Auth::user()->user_type_id == 1){
             $org = $input['organization_id'];
         }else{

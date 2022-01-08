@@ -22,13 +22,8 @@
                                             <th>Blood Group</th>
                                             <th>Date</th>
                                             <th>Checup-Report</th>
-                                            
-
-                                            
-                                            <th>created at</th>
-                                            @can('permission-action')
-                                                <th>@lang('action')</th>
-                                            @endcan
+                                                <th>Actions</th>
+                                         
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -42,7 +37,7 @@
                                                         <td>{{$bloodstock->blood_group}}</td>
                                                         <td>{{$bloodstock->collected_date}}</td>
                                                         <td>{{$bloodstock->blood_checkup_report}}</td>
-                                                        <td>{{$bloodstock->created_at->toFormattedDateString()}}</td>
+                                                       
                                                         
                                                        
                                                        
