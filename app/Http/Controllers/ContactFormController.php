@@ -14,7 +14,7 @@ class ContactFormController extends Controller
      */
     public function index()
     {
-        $contact = contact_form::orderBy('created_at', 'DESC')->take(5)->get();
+        $contact = contact_form::orderBy('created_at', 'DESC')->take(100)->get();
         // return view('mailbox')->with('contact',$contact);
         return view('mailbox',compact('contact'));
     }

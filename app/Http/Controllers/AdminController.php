@@ -17,9 +17,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // if(! Gate::allows('admin-view')){
-        //     return abort(401);
-        // }
+        if(! Gate::allows('admin-view')){
+            return abort(401);
+        }
         $admin = Admin::all();
         // dd($admin);
         // foreach($admin as $a){

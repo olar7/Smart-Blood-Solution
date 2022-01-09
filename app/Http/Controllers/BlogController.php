@@ -18,6 +18,9 @@ class BlogController extends Controller
      */
     public function index()
     {
+        if(! Gate::allows('blog-view')){
+            return abort(401);
+        }
         $blog = Blog::all();
         return view('admin.blog.index')->with('blogs', $blog);
         
@@ -30,6 +33,9 @@ class BlogController extends Controller
      */
     public function create()
     {
+        if(! Gate::allows('blog-add')){
+            return abort(401);
+        }
         // $blog = Blog::all();
         $admin= '';
         if(Auth::user()->user_type_id == 1){
@@ -46,6 +52,9 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        if(! Gate::allows('blog-add')){
+            return abort(401);
+        }
         $input = $request->all();
         
         if ($image = $request->file('image')) {
@@ -73,11 +82,6 @@ class BlogController extends Controller
         // Blog::create($input);
         // dd($input);
         return redirect()->route('blog.index');
-
-        
-      
-
-        
         
     }
 
@@ -99,7 +103,11 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(blog $blog)
+    
     {
+        if(! Gate::allows('blog-edit')){
+            return abort(401);
+        }
         return view('admin.blog.edit',compact("blog"));
     }
 
@@ -113,6 +121,10 @@ class BlogController extends Controller
     public function update(Request $request, blog $blog)
     
     {
+
+        if(! Gate::allows('blog-edit')){
+            return abort(401);
+        }
         $input = $request->all();
         if ($image = $request->file('image')) {
             $destinationPath = 'images/';
@@ -143,6 +155,9 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
+        if(! Gate::allows('blog-delete')){
+            return abort(401);
+        }
         Blog::find($id)->delete();
         return redirect()->route('blog.index');
     }

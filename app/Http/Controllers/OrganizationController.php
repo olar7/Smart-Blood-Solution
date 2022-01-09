@@ -20,6 +20,9 @@ class OrganizationController extends Controller
      */
     public function index()
     {
+        if(! Gate::allows('organization-view')){
+            return abort(401);
+        }
         $organizations =  Organization::all();
         return view('admin.organization.index', compact('organizations'));
     }
@@ -31,6 +34,9 @@ class OrganizationController extends Controller
      */
     public function create()
     {
+        if(! Gate::allows('organization-add')){
+            return abort(401);
+        }
         return view('admin.organization.create')->with('user_type', DB::table('user_types')
         ->where('user_type', 'organization')->first());
     }
@@ -43,7 +49,11 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
-        
+
+        if(! Gate::allows('organization-add')){
+            return abort(401);
+        }
+
         $input = $request->all();
         
         if ($image = $request->file('logo')) {
@@ -75,11 +85,7 @@ class OrganizationController extends Controller
         ]);
         return redirect()->route('organization.index');
     }
-        // dd($input['org_name']);
-    //    if($image =$request->file('logo')){
-    //        $destinationPath= 'admin_assets/images';
-    //        $orgImage = date('YmdHis')
-    //    }
+        
     
 
     /**
@@ -102,7 +108,9 @@ class OrganizationController extends Controller
     public function edit(organization $organization)
     {
        
-
+        if(! Gate::allows('organization-edit')){
+            return abort(401);
+        }
         
         return view('admin.organization.edit',compact("organization"))->with('user_type', DB::table('user_types')
         ->where('user_type', 'organization')->first());
@@ -118,6 +126,9 @@ class OrganizationController extends Controller
      */
     public function update(Request $request, organization $organization)
     {
+        if(! Gate::allows('organization-edit')){
+            return abort(401);
+        }
         // $organization = Organization::findOrFail($id);
         $user = $organization->user;
         $input = $request->all();
@@ -159,15 +170,16 @@ class OrganizationController extends Controller
      */
     public function destroy( $id)
     {
+        if(! Gate::allows('organization-delete')){
+            return abort(401);
+        }
         Organization::find($id)->delete();
         return redirect()->route('organization.index');
     }
     public function orgProfile($id){
 
         $organization = Organization::find($id);
-        // dd($organization);
         $bloodstock = $organization->bloodstock;
-        // dd($bloodstock);
         $campaign = $organization->campaigns;
         return view('organization.profile', compact('organization'))->with('campaign',$campaign)->with('bloodstock',$bloodstock);
     }
