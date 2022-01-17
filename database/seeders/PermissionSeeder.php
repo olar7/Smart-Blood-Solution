@@ -98,6 +98,13 @@ class PermissionSeeder extends Seeder
             ['permission' => 'detail-view', 'component_id' => 13 ],
             ['permission' => 'detail-delete', 'component_id' => 13 ],
             ['permission' => 'detail-action', 'component_id' => 13 ],
+
+            ['permission' => 'admindash-access', 'component_id' => 14 ],
+            ['permission' => 'admindash-add', 'component_id' => 14 ],
+            ['permission' => 'admindash-edit', 'component_id' => 14 ],
+            ['permission' => 'admindash-view', 'component_id' => 14 ],
+            ['permission' => 'admindash-delete', 'component_id' => 14 ],
+            ['permission' => 'admindash-action', 'component_id' => 14 ],
             
            
 

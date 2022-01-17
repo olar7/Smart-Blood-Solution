@@ -60,7 +60,6 @@ class AdminController extends Controller
             'address' => $request->address,
             'email' => $request->email,
             'contact' => $request->contact,
-            
             'password' => Hash::make($request->password),
             'user_type_id' => $request->user_type_id,
         ]);

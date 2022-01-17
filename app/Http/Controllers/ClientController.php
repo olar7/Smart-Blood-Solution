@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\client;
-
-
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -17,8 +15,10 @@ class ClientController extends Controller
     public function index()
     {
        
-        $client = client::all();
-        return view('admin.client.index',compact('client'));
+        $clients = client::all();
+        
+        // return view('admin.client.index',compact('client'));
+        return view('admin.client.index')->with('clients',$clients);
     }
 
     /**
@@ -84,6 +84,6 @@ class ClientController extends Controller
      */
     public function destroy(client $client)
     {
-        //
+        
     }
 }

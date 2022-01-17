@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\campaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Organization;
 use DB;
 
@@ -17,6 +18,10 @@ class CampaignController extends Controller
      */
     public function index()
     {
+        if(! Gate::allows('campaign-view')){
+            return abort(401);
+        }
+
         $user_type = Auth::user()->user_type_id;
         if($user_type == 1){
             $campaign = Campaign::all();
@@ -35,6 +40,9 @@ class CampaignController extends Controller
     public function create()
     {
         // $campaign = Campaign::all();
+        if(! Gate::allows('campaign-add')){
+            return abort(401);
+        }
         $organizations= '';
         if(Auth::user()->user_type_id == 1){
             $organizations = Organization::all();
@@ -52,6 +60,9 @@ class CampaignController extends Controller
     public function store(Request $request)
     {
 
+        if(! Gate::allows('campaign-add')){
+            return abort(401);
+        }
         $input = $request->all();
         if ($image = $request->file('photo')) {
             $path = 'images/';
@@ -108,6 +119,9 @@ class CampaignController extends Controller
      */
     public function edit(campaign $campaign)
     {
+        if(! Gate::allows('campaign-edit')){
+            return abort(401);
+        }
         // $campaign = Campaign::all();
         return view('admin.campaign.edit',compact('campaign'));
     }
@@ -121,6 +135,9 @@ class CampaignController extends Controller
      */
     public function update(Request $request, campaign $campaign)
     {
+        if(! Gate::allows('campaign-edit')){
+            return abort(401);
+        }
         $input = $request->all();
         if ($image = $request->file('photo')) {
             $path = 'images/';
@@ -152,6 +169,9 @@ class CampaignController extends Controller
      */
     public function destroy($id)
     {
+        if(! Gate::allows('campaign-delete')){
+            return abort(401);
+        }
         Campaign::find($id)->delete();
         return redirect()->route('campaign.index');
     }

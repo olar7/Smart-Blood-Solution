@@ -6,6 +6,7 @@ use App\Models\blood_stock;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use DB;
 
 class BloodStockController extends Controller
@@ -17,6 +18,10 @@ class BloodStockController extends Controller
      */
     public function index()
     {
+
+        if(! Gate::allows('bloodstock-view')){
+            return abort(401);
+        }
     $user_type = Auth::user()->user_type_id;
     if($user_type == 1){
         $bloodstock = blood_stock::all();
@@ -37,6 +42,9 @@ class BloodStockController extends Controller
      */
     public function create()
     {
+        if(! Gate::allows('bloodstock-add')){
+            return abort(401);
+        }
         $organizations= '';
         if(Auth::user()->user_type_id == 1){
             $organizations = Organization::all();
@@ -52,6 +60,10 @@ class BloodStockController extends Controller
      */
     public function store(Request $request )
     {
+        if(! Gate::allows('bloodstock-add')){
+            return abort(401);
+        }
+
         $input = $request->all();
         if(Auth::user()->user_type_id == 1){
             $org = $input['organization_id'];
@@ -91,6 +103,9 @@ class BloodStockController extends Controller
      */
     public function edit(blood_stock $bloodstock)
     {
+        if(! Gate::allows('bloodstock-edit')){
+            return abort(401);
+        }
         // $bloodstock = blood_stock::all();
          return view('bloodstock.edit',compact('bloodstock'));
     }
@@ -104,6 +119,9 @@ class BloodStockController extends Controller
      */
     public function update(Request $request, blood_stock $bloodstock)
     {
+        if(! Gate::allows('bloodstock-edit')){
+            return abort(401);
+        }
 
         $bloodstock->update($request->all());
         return redirect()->route('bloodstock.index');
@@ -117,6 +135,9 @@ class BloodStockController extends Controller
      */
     public function destroy($id)
     {
+        if(! Gate::allows('bloodstock-delete')){
+            return abort(401);
+        }
         blood_stock::find($id)->delete();
         return redirect()->route('bloodstock.index');
     }

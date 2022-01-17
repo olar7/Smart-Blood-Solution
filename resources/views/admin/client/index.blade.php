@@ -21,7 +21,7 @@
                                             <th>First Name</th>
                                             <th>Last Name</th>
                                             <th>Email</th>
-                                            <th>Password</th>
+                                           
                                             <th>Contact</th>
                                             <th>Address</th>
                                             <th>Blood-group</th>
@@ -32,16 +32,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if ($client->count() > 0)
-                                            @php($client = 1)
-                                            @foreach ($client as $client)
+                                        @if ($clients->count() > 0)
+                                            @php($count = 1)
+                                            @foreach ($clients as $client)
                                                 @if ($client)
                                                     <tr>
                                                         <td>{{$count}}</td>
                                                         <td>{{$client->user->first_name}}</td>
-                                                        <td>{{$client->user->first_name}}</td>
-                                                        <td>{{$client->user->first_name}}</td>
-                                                        <td>{{$client->user->first_name}}</td>
+                                                        <td>{{$client->user->last_name}}</td>
+                                                        <td>{{$client->user->email}}</td>
+                                                        <td>{{$client->user->contact}}</td>
+                                                        <td>{{$client->user->address}}</td>
+                                                        <td>{{$client->blood_group}}</td>
+                                                        <td>{{$client->created_at->toFormattedDateString()}}</td>
+
                                                        
                                                        
                                                         
@@ -49,14 +53,14 @@
                                                         @can('client-action')
                                                             <td class="action">
                                                                 @can('client-edit')
-                                                                    <a href="{{route('client.edit', $client->id)}}" data-toggle="tooltip" title="@lang('global.app_edit')" class="btn btn-info btn-sm">
+                                                                    <a href="" data-toggle="tooltip" title="@lang('global.app_edit')" class="btn btn-info btn-sm">
                                                                         <i class="far fa-edit"></i>
                                                                     </a>
                                                                 @endcan
                                                                     <br>
                                                                     <br>
                                                                 @can('client-delete')
-                                                                    <form action="{{route('client.destroy', ['blog' => $client->id])}}" method="post">
+                                                                    <form action="" method="post">
                                                                         @csrf
                                                                         @method('delete')
                                                                         <button type="submit" data-toggle="tooltip" title="@lang('global.app_trash')" class="btn btn-danger btn-sm">

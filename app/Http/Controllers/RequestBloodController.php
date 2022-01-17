@@ -31,17 +31,6 @@ class RequestBloodController extends Controller
     }
 
     public function sendMail(){
-        $customer = $servicing->bookings->customerVehicles->customer->user;
-
-        $customer_email = $customer->email;
-        $data =array(
-            'name' => $customer->first_name,
-            'message' => 'Your Vehicle has been serviced please come and pick.',
-            'nextService' => $servicing->next_servicing,
-        );
-
-        Mail::to($customer->email)
-            ->send(new ServicingCompleteMail($data));
-        return 200;
+      
     }
 }

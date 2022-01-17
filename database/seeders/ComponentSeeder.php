@@ -31,6 +31,7 @@ class ComponentSeeder extends Seeder
             ['id' => 11, 'component' => 'question'],
             ['id' => 12, 'component' => 'blood'],
             ['id' => 13, 'component' => 'detail'],
+            ['id' => 14, 'component' => 'Admin Dash'],
         ];
 
         foreach($items as $item)

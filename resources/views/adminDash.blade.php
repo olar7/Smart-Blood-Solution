@@ -276,7 +276,7 @@
                 labels: ['Campaigns', 'organization', 'Blood Requests', 'Inbox', 'Clients', 'Admins','Blogs'],
                 datasets: [{
                     label: 'Graph Chart',
-                    data: [{{$campaign}}, {{$organization}},{{$blood_requests}},{{$contact}},2,{{$admin_no}},{{$blog}}],
+                    data: [{{$campaign}}, {{$organization}},{{$blood_requests}},{{$contact}},{{$clientList}},{{$admin_no}},{{$blog}}],
                     backgroundColor: [
                         '#E12800',
                         '#002DFF',

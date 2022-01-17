@@ -7,6 +7,7 @@ use DB;
 use App\Models\User;
 use App\Models\Organization;
 use App\Models\Admin;
+use App\Models\Client;
 class UserSeeder extends Seeder
 
 {
@@ -21,6 +22,7 @@ class UserSeeder extends Seeder
         User::truncate();
         Organization::truncate();
         Admin::truncate();
+        Client::truncate();
         $items = [
             [
                 'first_name'=>'admin', 
@@ -32,16 +34,6 @@ class UserSeeder extends Seeder
                 'user_type_id' => 1
                 
             ],
-            [
-                'first_name'=>'client', 
-                'last_name'=>'client', 
-                'email' => 'client@client.com', 
-                'password' => bcrypt('hello123'), 
-                'contact' =>'01-8890',
-                'address' => 'add',
-                
-                'user_type_id' => 1
-            ]
         ];
 
         foreach($items as $item){

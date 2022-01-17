@@ -233,9 +233,11 @@
       <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
 
         
+        @can('admindash-view')
         <li class="active">
           <a href="/admin">Dashboard</a>
         </li>
+        @endcan
         
         <li>
           <a href="/admin/adminvalidation"> Blood Requests</a>

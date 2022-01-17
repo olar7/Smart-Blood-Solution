@@ -89,6 +89,7 @@ Route::group(['prefix' => 'org', 'middleware' => 'auth'], function () {
     route::resource('bloodstock',App\Http\Controllers\BloodStockController::class);
 });
 
+
     Route::group(['prefix' => 'client', 'middleware' => 'auth'], function () {
         Route::get('donorlist', [App\Http\Controllers\donor::class, 'index'])->name('donorlist');
 });

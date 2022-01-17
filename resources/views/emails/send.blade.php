@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ItsolutionStuff.com</title>
+    <title>BloodBank</title>
 </head>
 <body>
     Dear Sir/Mam,
