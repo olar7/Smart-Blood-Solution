@@ -20,6 +20,9 @@
         border: 2px solid;
         border-radius: 20px;
     }
+    .form-group{
+        margin: 10px 130px;
+    }
 </style>
 <div class="main-container">
     <h2 style="text-align: center;">Fill The required information</h2>
@@ -28,25 +31,8 @@
             @csrf
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Enter Your Full Name" name="donor_name">
-            </div>
-
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Contact no</label>
-                <input type="number" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Enter your Contact Number" name="donor_contact">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Address</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Enter Your current location" name="donor_location">
-            </div>
-
-            <div class="mb-3">
                 <label for="formGroupExampleInput2">Blood Group</label>
-                <select id="inputState" class="form-control" name="test_status">
+                <select id="inputState" class="form-control"  name="blood_group">
                     <option selected>Choose Blood Type</option>
                     <option>A+ ve</option>
                     <option>A- ve</option>
@@ -56,21 +42,35 @@
                     <option>O- ve</option>
                     <option>AB+ ve</option>
                     <option>AB- ve</option>
+              
+                  </select>
+              </div>
 
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Nationality</label>
+            {{-- <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Blood Type</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Enter Your Nationality" name="donor_nationality">
+                    placeholder="Enter your blood type" name="blood_type">
+            </div> --}}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Volume</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1"
+                    placeholder="Enter Your current location" name="volume">
             </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Image</label>
+                <input type="file" class="form-control" id="exampleFormControlInput1"
+                    placeholder="Enter Your current location" name="validation">
+            </div>
+
+
+         
+            <textarea name="note" id="" cols="150" rows="10"></textarea>
 
             <br>
             <br>
     </div>
-    <div class="form-survey">
-        <h2 style="text-align: center;">Survey questions</h2>
-    </div>
+    
     <div class="survey-btn">
     <button class="btn btn-primary" type="submit" id="survey-button">Submit</button>
     </div>

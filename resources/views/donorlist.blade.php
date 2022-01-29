@@ -24,9 +24,10 @@
         <thead class="thead-dark" >
           <tr class="table-dark">
             <th scope="col">S.N</th>
+            <th scope="col">Blood Group</th>
+            <th scope="col">Blood volume</th>
             <th scope="col">Name</th>
             <th scope="col">Contact</th>
-            <th scope="col">Blood-Group</th>
             <th scope="col">Address</th>
           </tr>
         </thead>
@@ -36,10 +37,11 @@
           @foreach ($detail as $item)
           <tr>
             <th scope="row">{{$count}}</th>
-            <td>{{$item->donor_name}}</td>
-            <td>{{$item->donor_contact}}</td>
-            <td>{{$item->test_status}}</td>
-            <td> {{$item->donor_location}}</td>
+            <td>{{$item->blood_group}}</td>
+            <td>{{$item->volume}}</td>
+            <td>{{$item->client->user->first_name}} {{$item->client->user->last_name}}</td>
+            <td>{{$item->client->user->contact}}</td>
+            <td> {{$item->client->user->address}}</td>
           </tr>
           @php($count++)
           @endforeach

@@ -205,7 +205,7 @@
                         <th scope="col">S.N</th>
                         <th scope="col">Blood-Group</th>
                         <th scope="col">Report</th>
-                        <th scope="col">Donor Name</th>
+                        
                         <th scope="col">Collected date</th>
                       </tr>
                     </thead>
@@ -217,7 +217,7 @@
                             <th scope="row">{{$count}}</th>
                             <td>{{$item->blood_group}}</td>
                             <td>{{$item->blood_checkup_report}}</td>
-                            <td>Otto</td>
+                            
                             <td>{{$item->collected_date}}</td>
                         </tr>
                         @php($count++)

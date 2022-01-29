@@ -1,5 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.masteradmin')
 @section("content")
+
 <!-- css section -->
 <style>
       body{
@@ -67,6 +68,15 @@
   height: 150px;
   width: 150px;
 }
+
+.container{
+  width: 500%;
+}
+.card-body{
+  border: 2px solid;
+  border-radius: 12px;
+  box-shadow: 5px 5px black;
+}
     </style>
 
     <!-- container section -->
@@ -74,34 +84,25 @@
         <div class="main-body">
         
               <div class="row gutters-sm">
-                <div class="col-md-4 mb-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex flex-column align-items-center text-center" >
-                        <div id="profile-img">
-                        <img src="images/ben.jpg" alt="Admin" class="" width="">
-                        </div>
-                        <div class="mt-3">
-                          <h4>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h4>
-                          <p class="text-secondary mb-1"><strong>Blood Type:</strong> A+ve</p>
-                          <p class="text-muted font-size-sm">{{ Auth::user()->address }}</p>
-                          <button class="btn btn-primary">Follow</button>
-                          <button class="btn btn-outline-primary">Message</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                </div>
+                
                 <div class="col-md-8">
                   <div class="card mb-3">
                     <div class="card-body">
                       <div class="row">
                         <div class="col-sm-3">
+                          <h6 class="mb-0">Id. No</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                        {{ $profile->id}}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
                           <h6 class="mb-0">Full Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                        {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                        {{ $profile->user->first_name }} {{ $profile->user->last_name }}
                         </div>
                       </div>
                       <hr>
@@ -110,34 +111,28 @@
                           <h6 class="mb-0">Email</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                        {{ Auth::user()->email }}
+                        {{ $profile->user->email }}
                         </div>
                       </div>
                       <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Blood Type</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                        A+ve
-                        </div>
-                      </div>
-                      <hr>
+                      
                       <div class="row">
                         <div class="col-sm-3">
                           <h6 class="mb-0">Mobile</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                        {{ Auth::user()->contact}}
+                        {{ $profile->user->contact}}
                         </div>
                       </div>
                       <hr>
+
+                      
                       <div class="row">
                         <div class="col-sm-3">
                           <h6 class="mb-0">Address</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                        {{ Auth::user()->address }}
+                        {{ $profile->user->address }}
                         </div>
                       </div>
                       <hr>
@@ -154,5 +149,9 @@
     
             </div>
         </div>
+
+{{-- second profile --}}
+
+
 
 @endsection

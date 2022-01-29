@@ -16,11 +16,10 @@ class CreateBloodsTable extends Migration
         Schema::create('bloods', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('blood_group','255');
-            $table->string('blood_type','255');
+            $table->string('blood_type','255')->nullable();
             $table->string('volume','255');
             $table->string('validation')->nullable();
             $table->text('note')->nullable();
-
             $table->bigInteger('client_id')->unsigned();
 
             $table->foreign('client_id')

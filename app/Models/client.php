@@ -13,4 +13,8 @@ class client extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function blood(){
+        return $this->hasMany(blood::class);
+    }
 }

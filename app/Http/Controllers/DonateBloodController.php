@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\detail;
+use App\Models\blood;
 
 class DonateBloodController extends Controller
 {
     
         public function index(){
-            // $detail = detail::all();
+            
         return view('bedonor');
         }
     
@@ -18,18 +18,22 @@ class DonateBloodController extends Controller
     public function store(Request $request){
         
         $input = $request->all();
-        $detail = Detail::create([
-            'donor_name'=> $input['donor_name'],
-            'donor_nationality'=> $input['donor_nationality'],
-            'donor_contact'=> $input['donor_contact'],
-            'donor_location'=> $input['donor_location'],
-            // 'description'=> $input['description'],
-            'test_status'=> $input['test_status'],
-            'blood_id' => 7,
+        if ($image = $request->file('validation')) {
+            $destinationPath = 'images/';
+            $validationImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $validationImage);
+            $input['validation'] = $validationImage;
+        }
+
+        $blood = blood::create([
+            'blood_group' => $input['blood_group'],
+            // 'blood_type' => $input['blood_type'],
+            'volume' => $input['volume'],
+            'validation' => $input['validation'],
+            'note' => $input['note'],
+            'client_id' => auth::user()->client->id,
         ]);
-        // $input['blood_id'] = Auth::user()->id;
-        // Detail::create($input);
-        // dd($request->all());
+        
 
         return redirect()->route('bedonor.index');
     }

@@ -46,6 +46,6 @@ class EmailController extends Controller
         // Response
         $response = curl_exec($ch);
         curl_close($ch);
-        return redirect()->route('validation.show');
+        return redirect()->back();
     }
 }

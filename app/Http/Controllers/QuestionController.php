@@ -40,7 +40,7 @@ class QuestionController extends Controller
         $input = $request->all();
         Question::create($input);
         // dd($input);
-        return redirect()->route('question.index');
+        return redirect()->back();
     }
 
     /**

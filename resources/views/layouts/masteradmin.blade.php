@@ -196,7 +196,7 @@
   <!-- navbar section -->
 
   <nav class="navbar navbar-dark bg-dark" id="adminnav">
-    <a href="/"><span class="navbar-brand mb-0 h1">Blood Bank</span></a>
+    <a href="/"><span class="navbar-brand mb-0 h1">Home</span></a>
             
 
      <div class="dropdown">
@@ -207,7 +207,7 @@
                             
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownMenuButton">
         <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="/profile">Profile</a></li>
+        <li><a class="dropdown-item" href="{{route('profile.index')}}">Profile</a></li>
         <li><hr class="dropdown-divider"></li>
         <li>
         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -239,12 +239,14 @@
         </li>
         @endcan
         
+        @can('admin-view')
         <li>
           <a href="/admin/adminvalidation"> Blood Requests</a>
         </li>
         <li>
           <a href="/admin/contactform"> Inbox</a>
         </li>
+        @endcan
         
         
         @can('admin-view')
@@ -291,9 +293,9 @@
         @endcan 
 
         @can('detail-view')
-        <li>
+        {{-- <li>
           <a href="/admin/detail">Details</a>
-        </li>
+        </li> --}}
         @endcan
 
         @can('question-view')

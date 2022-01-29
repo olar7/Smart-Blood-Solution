@@ -55,4 +55,7 @@ class User extends Authenticatable
     public function organization(){
         return $this->hasOne(Organization::class);
     }
+    public function client(){
+        return $this->hasOne(Client::class);
+    }
 }

@@ -85,7 +85,7 @@
           <a class="nav-link active" href="/donorreq" >Request Blood</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Services</a>
+          <a class="nav-link active" href="{{route('service.index')}}">Services</a>
         </li>
         
         <div id= "login-icon">
@@ -107,7 +107,7 @@
 
   <footer id="sticky-footer" class="flex-shrink-0 py-4  text-white">
     <div class="container text-center">
-      <h4>Copyright &copy; Blood bank</h4>
+      <h4>Copyright &copy; Digital Blood Services</h4>
     </div>
   </footer>
 </div>

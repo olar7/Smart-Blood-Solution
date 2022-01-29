@@ -66,7 +66,7 @@ class BloodController extends Controller
      */
     public function show(blood $blood)
     {
-        //
+       return view('services',compact('blood'));
     }
 
     /**

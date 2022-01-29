@@ -38,7 +38,7 @@ Route::get('blogView/{id}', [App\Http\Controllers\BlogController::class, 'blogVi
 Route::post('donorreq', [App\Http\Controllers\GuestController::class, 'store'])->name('guest.store');
 Route::get('donorreq', [App\Http\Controllers\GuestController::class, 'index'])->name('guest.index');
 Route::post('contactform', [App\Http\Controllers\ContactFormController::class, 'store'])->name('contactform.store');
-
+Route::get('services', [App\Http\Controllers\serviceController::class, 'index'])->name('service.index');
 // sms route
 // Route::get('donorreq', [App\Http\Controllers\SmsController::class, 'index'])->name('sms.index');
 // Route::resource('donorreq', [App\Http\Controllers\GuestController::class]);
@@ -48,7 +48,7 @@ Route::post('contactform', [App\Http\Controllers\ContactFormController::class, '
 route::view('addUsers',"addUsers");
 // route::view('blogdetails',"blogdetails");
 route::view('admailbox',"mailbox");
-route::view('profile',"userprofile");
+// route::view('profile',"userprofile");
 // route::view('orgprofile',"organization/profile");
 
 Auth::routes();
@@ -80,19 +80,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('contactform', [App\Http\Controllers\ContactFormController::class, 'index'])->name('contactform.index');
     Route::get('messageview/{id}', [App\Http\Controllers\ContactFormController::class, 'show'])->name('messageview.show');
     Route::get('messagedel/{id}', [App\Http\Controllers\ContactFormController::class, 'delete'])->name('messageview.delete');
+    Route::get('profile',[App\Http\Controllers\profileController::class, 'index'])->name('profile.index');
     
     
     
 });
-Route::group(['prefix' => 'org', 'middleware' => 'auth'], function () {
-    Route::get('', [App\Http\Controllers\AdminDash::class, 'index'])->name('index');
-    route::resource('bloodstock',App\Http\Controllers\BloodStockController::class);
-});
+// Route::group(['prefix' => 'org', 'middleware' => 'auth'], function () {
+//     Route::get('', [App\Http\Controllers\AdminDash::class, 'index'])->name('index');
+//     route::resource('bloodstock',App\Http\Controllers\BloodStockController::class);
+// });
 
 
-    Route::group(['prefix' => 'client', 'middleware' => 'auth'], function () {
-        Route::get('donorlist', [App\Http\Controllers\donor::class, 'index'])->name('donorlist');
-});
+//     Route::group(['prefix' => 'client', 'middleware' => 'auth'], function () {
+//         Route::get('donorlist', [App\Http\Controllers\donor::class, 'index'])->name('donorlist');
+// });
 // mail route
 Route::get('send-mail', function () {
    
